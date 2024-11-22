@@ -14,6 +14,9 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import quickmathv2.*;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Lenovo
@@ -48,6 +51,10 @@ private Clip clip;
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        searchBox = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -57,6 +64,7 @@ private Clip clip;
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -100,7 +108,7 @@ private Clip clip;
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("RANKING");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 422, 100));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 422, 100));
 
         jPanel4.setBackground(new java.awt.Color(102, 255, 102));
 
@@ -195,6 +203,61 @@ private Clip clip;
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 620, 10));
 
+        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel8.setFont(new java.awt.Font("SimSun-ExtB", 3, 48)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("SEARCH :");
+        jLabel8.setOpaque(true);
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 210, 50));
+
+        jLabel9.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("ALL");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 140, 40));
+
+        jLabel10.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Enter");
+        jLabel10.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jLabel10FocusGained(evt);
+            }
+        });
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, 180, 50));
+
+        searchBox.setBackground(new java.awt.Color(255, 255, 255));
+        searchBox.setFont(new java.awt.Font("SimSun-ExtB", 2, 48)); // NOI18N
+        searchBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchBoxMouseClicked(evt);
+            }
+        });
+        searchBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBoxActionPerformed(evt);
+            }
+        });
+        searchBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchBoxKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                searchBoxKeyTyped(evt);
+            }
+        });
+        getContentPane().add(searchBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 400, 70));
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quickmathv2/MusicAndIcon/70-removebg-preview (1) (1).png"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, -1, -1));
 
@@ -208,10 +271,18 @@ private Clip clip;
             new String [] {
                 "NO", "NAME", "LEVEL", "SCORE", "TIMETAKEN"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 810, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 810, 250));
 
         lvl3.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         lvl3.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,7 +292,7 @@ private Clip clip;
                 lvl3MouseClicked(evt);
             }
         });
-        getContentPane().add(lvl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, -1));
+        getContentPane().add(lvl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 600, -1, -1));
 
         lvl1.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         lvl1.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,7 +302,7 @@ private Clip clip;
                 lvl1MouseClicked(evt);
             }
         });
-        getContentPane().add(lvl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
+        getContentPane().add(lvl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, -1, -1));
 
         lvl2.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         lvl2.setForeground(new java.awt.Color(255, 255, 255));
@@ -241,7 +312,7 @@ private Clip clip;
                 lvl2MouseClicked(evt);
             }
         });
-        getContentPane().add(lvl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
+        getContentPane().add(lvl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quickmathv2/MusicAndIcon/video.gif"))); // NOI18N
@@ -257,6 +328,19 @@ private Clip clip;
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("LEVEL 1");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 810, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 810, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -296,13 +380,43 @@ private Clip clip;
         MusicPlayer player = MusicPlayer.getInstance();
          
         player.playbuttonMusic();
+        String sql= "select *  from ranking where lvl = '1'";
+        RankTable rt= new RankTable();
+        ArrayList<Rankings> rank = new ArrayList<>();
+        DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
+        rank = rt.readRankings(sql);
+        Sorting sort =new Sorting();
+        sort.sort(rank);
+        tbModel.setRowCount(0);
+        int i=1;
+        for (Rankings rankers : rank){
+            System.out.println(rankers);
+            String tcData[] ={String.valueOf(i),rankers.getName(),rankers.getLevel(),String.valueOf(rankers.getScore()),rankers.getTimeTaken()};
+            i++;
+            tbModel.addRow(tcData);
+        }
     }//GEN-LAST:event_lvl1MouseClicked
 
     private void lvl2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lvl2MouseClicked
         // TODO add your handling code here:
         MusicPlayer player = MusicPlayer.getInstance();
-         
+        
         player.playbuttonMusic();
+        String sql= "select *  from ranking where lvl = '2'";
+        RankTable rt= new RankTable();
+        ArrayList<Rankings> rank = new ArrayList<>();
+        DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
+        rank = rt.readRankings(sql);
+        Sorting sort =new Sorting();
+        sort.sort(rank);
+        tbModel.setRowCount(0);
+        int i=1;
+        for (Rankings rankers : rank){
+            System.out.println(rankers);
+            String tcData[] ={String.valueOf(i),rankers.getName(),rankers.getLevel(),String.valueOf(rankers.getScore()),rankers.getTimeTaken()};
+            i++;
+            tbModel.addRow(tcData);
+        }
     }//GEN-LAST:event_lvl2MouseClicked
 
     private void lvl3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lvl3MouseClicked
@@ -310,7 +424,145 @@ private Clip clip;
         MusicPlayer player = MusicPlayer.getInstance();
          
         player.playbuttonMusic();
+        String sql= "select *  from ranking where lvl = '3'";
+        RankTable rt= new RankTable();
+        ArrayList<Rankings> rank = new ArrayList<>();
+        DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
+        rank = rt.readRankings(sql);
+        Sorting sort =new Sorting();
+        sort.sort(rank);
+        tbModel.setRowCount(0);
+        int i=1;
+        for (Rankings rankers : rank){
+            System.out.println(rankers);
+            String tcData[] ={String.valueOf(i),rankers.getName(),rankers.getLevel(),String.valueOf(rankers.getScore()),rankers.getTimeTaken()};
+            i++;
+            tbModel.addRow(tcData);
+        }
     }//GEN-LAST:event_lvl3MouseClicked
+
+    private void searchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBoxActionPerformed
+        // TODO add your handling code here:
+        String sql= "select *  from ranking";
+        RankTable rt= new RankTable();
+        ArrayList<Rankings> rank = new ArrayList<>();
+        DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
+        rank = rt.readRankings(sql);
+        Sorting sort =new Sorting();
+        sort.nameSort(rank);
+        tbModel.setRowCount(0);
+        int i=1;
+        for (Rankings rankers : rank){
+            System.out.println(rankers);
+            String tcData[] ={String.valueOf(i),rankers.getName(),rankers.getLevel(),String.valueOf(rankers.getScore()),rankers.getTimeTaken()};
+            i++;
+            tbModel.addRow(tcData);
+        }
+    }//GEN-LAST:event_searchBoxActionPerformed
+
+    private void searchBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBoxMouseClicked
+        // TODO add your handling code here:
+        searchBoxActionPerformed(null);
+        
+    }//GEN-LAST:event_searchBoxMouseClicked
+
+    private void searchBoxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchBoxKeyTyped
+        // TODO add your handling code here:
+       searchBoxActionPerformed(null);
+         
+        
+    }//GEN-LAST:event_searchBoxKeyTyped
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        String sql= "select *  from ranking";
+        RankTable rt= new RankTable();
+        ArrayList<Rankings> rank = new ArrayList<>();
+        DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
+        rank = rt.readRankings(sql);
+        //Sorting sort =new Sorting();
+       // sort.sort(rank);
+        tbModel.setRowCount(0);
+        int i=1;
+        for (Rankings rankers : rank){
+            System.out.println(rankers);
+            String tcData[] ={String.valueOf(i),rankers.getName(),rankers.getLevel(),String.valueOf(rankers.getScore()),rankers.getTimeTaken()};
+            i++;
+            tbModel.addRow(tcData);
+        }
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        // TODO add your handling code here:
+        String sql= "select *  from ranking";
+        String s= searchBox.getText();
+        RankTable rt= new RankTable();
+        ArrayList<Rankings> rank = new ArrayList<>();
+        DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
+        rank = rt.readRankings(sql);
+        Sorting sort =new Sorting();
+        sort.nameSort(rank);
+        int j=0;
+        try{
+            Searching bs = new Searching();
+            
+             j= bs.searchName(rank, s);
+            if(j<0){
+                System.out.println("dun hava");
+            }
+             else{
+                System.out.println(rank.get(j));
+              }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        tbModel.setRowCount(0);
+        int i=1;
+        if(j>=0){
+            String tcData[] ={String.valueOf(i),rank.get(j).getName(),rank.get(j).getLevel(),String.valueOf(rank.get(j).getScore()),rank.get(j).getTimeTaken()};
+            tbModel.addRow(tcData);
+        }
+        
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void searchBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchBoxKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            jLabel10.requestFocus();
+        }
+    }//GEN-LAST:event_searchBoxKeyPressed
+
+    private void jLabel10FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel10FocusGained
+        // TODO add your handling code here:
+        String sql= "select *  from ranking";
+        String s= searchBox.getText();
+        RankTable rt= new RankTable();
+        ArrayList<Rankings> rank = new ArrayList<>();
+        DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
+        rank = rt.readRankings(sql);
+        Sorting sort =new Sorting();
+        sort.nameSort(rank);
+        int j=0;
+        try{
+            Searching bs = new Searching();
+            
+             j= bs.searchName(rank, s);
+            if(j<0){
+                System.out.println("dun hava");
+            }
+             else{
+                System.out.println(rank.get(j));
+              }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        tbModel.setRowCount(0);
+        int i=1;
+        if(j>=0){
+            String tcData[] ={String.valueOf(i),rank.get(j).getName(),rank.get(j).getLevel(),String.valueOf(rank.get(j).getScore()),rank.get(j).getTimeTaken()};
+            tbModel.addRow(tcData);
+        }
+    }//GEN-LAST:event_jLabel10FocusGained
 private void playMusic() {
         try {
             // 加载音频文件
@@ -330,6 +582,23 @@ private void stopMusic() {
             clip.close(); // 释放资源
         }
     }
+public  void initTable(){
+    String sql= "select *  from ranking";
+        RankTable rt= new RankTable();
+        ArrayList<Rankings> rank = new ArrayList<>();
+        DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
+        rank = rt.readRankings(sql);
+        Sorting sort =new Sorting();
+        sort.sort(rank);
+        tbModel.setRowCount(0);
+        int i=1;
+        for (Rankings rankers : rank){
+            System.out.println(rankers);
+            String tcData[] ={String.valueOf(i),rankers.getName(),rankers.getLevel(),String.valueOf(rankers.getScore()),rankers.getTimeTaken()};
+            i++;
+            tbModel.addRow(tcData);
+        }
+}
     /**
      * @param args the command line arguments
      */
@@ -364,11 +633,13 @@ private void stopMusic() {
                 new test2().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Back;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -377,6 +648,9 @@ private void stopMusic() {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -386,5 +660,6 @@ private void stopMusic() {
     private javax.swing.JLabel lvl1;
     private javax.swing.JLabel lvl2;
     private javax.swing.JLabel lvl3;
+    private javax.swing.JTextField searchBox;
     // End of variables declaration//GEN-END:variables
 }

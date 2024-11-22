@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import quickmathv2.QuetionManager;
 
 /**
  *
@@ -235,6 +236,11 @@ public class Name extends javax.swing.JFrame {
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
+        QuetionManager.additionTerms = true;
+        QuetionManager.substractionTerms = true;
+        QuetionManager.multiplicationTerms = true;
+        QuetionManager.divitionTerms = true;
+        QuetionManager.questionNum=20;
         QuestionDisplay jf1 = new QuestionDisplay();
         jf1.show();
         dispose();

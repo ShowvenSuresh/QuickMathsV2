@@ -535,6 +535,7 @@ if (player.isPlaying()) {
     private void rankingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rankingMouseClicked
         // TODO add your handling code here:
         test2 jf1 = new test2();
+        jf1.initTable();
         jf1.show();
         dispose();
         

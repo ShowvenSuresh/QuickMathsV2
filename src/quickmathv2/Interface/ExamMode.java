@@ -11,6 +11,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+//--> Added
+import quickmathv2.QuetionManager;
+
 /**
  *
  * @author Lenovo
@@ -24,7 +27,6 @@ private Clip clip;
     public ExamMode() {
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -421,10 +423,17 @@ private Clip clip;
         if (isPlaying) {
                     jLabel7.setIcon(playIcon);  // 切换到播放图标
                     
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel7.setIcon(stopIcon);  // 切换到停止图标
+                    
+                    //--> Added]
+                    QuetionManager.level = 1;
+                    System.out.println("HI");
+                    jLabel8.setIcon(playIcon);
+                    jLabel9.setIcon(playIcon);
                     
                     isPlaying = true;
                     
@@ -446,6 +455,11 @@ private Clip clip;
                     } 
             else {
                     jLabel8.setIcon(stopIcon);  // 切换到停止图标
+                    //--> Added]
+                    QuetionManager.level = 2;
+                    System.out.println("HI");
+                    jLabel7.setIcon(playIcon);
+                    jLabel9.setIcon(playIcon);
                     
                     isPlaying = true;
                     
@@ -467,6 +481,10 @@ private Clip clip;
                     } 
             else {
                     jLabel9.setIcon(stopIcon);  // 切换到停止图标
+                    //--> Added]
+                    QuetionManager.level = 3;
+                    jLabel8.setIcon(playIcon);
+                    jLabel7.setIcon(playIcon);
                     
                     isPlaying = true;
                     

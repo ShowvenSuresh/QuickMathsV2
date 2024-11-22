@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import quickmathv2.QuetionManager;
 /**
  *
  * @author Lenovo
@@ -459,10 +460,16 @@ private Clip clip;
         if (isPlaying) {
                     jLabel7.setIcon(playIcon);  // 切换到播放图标
                     
+                    //--> Added
+                    QuetionManager.additionTerms = false;
+                            
                     isPlaying = false;
                     } 
             else {
                     jLabel7.setIcon(stopIcon);  // 切换到停止图标
+                    
+                    //--> Added
+                    QuetionManager.additionTerms = true;
                     
                     isPlaying = true;
                     
@@ -480,13 +487,18 @@ private Clip clip;
         if (isPlaying) {
                     jLabel8.setIcon(playIcon);  // 切换到播放图标
                     
+                    //--> Added
+                    QuetionManager.substractionTerms = false;
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel8.setIcon(stopIcon);  // 切换到停止图标
                     
-                    isPlaying = true;
+                    //--> Added
+                    QuetionManager.substractionTerms = true;
                     
+                    isPlaying = true;
                    }
         
         MusicPlayer player = MusicPlayer.getInstance();
@@ -501,10 +513,16 @@ private Clip clip;
         if (isPlaying) {
                     jLabel9.setIcon(playIcon);  // 切换到播放图标
                     
+                    //--> Added
+                    QuetionManager.multiplicationTerms = false;
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel9.setIcon(stopIcon);  // 切换到停止图标
+                    
+                    //--> Added
+                    QuetionManager.multiplicationTerms = true;
                     
                     isPlaying = true;
                     
@@ -537,13 +555,18 @@ private Clip clip;
         if (isPlaying) {
                     jLabel14.setIcon(playIcon);  // 切换到播放图标
                     
+                    //--> Added
+                    QuetionManager.divitionTerms = false;
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel14.setIcon(stopIcon);  // 切换到停止图标
                     
-                    isPlaying = true;
+                    //--> Added
+                    QuetionManager.divitionTerms = true;
                     
+                    isPlaying = true;
                    }
         
         MusicPlayer player = MusicPlayer.getInstance();
