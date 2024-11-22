@@ -24,13 +24,12 @@ public class Queue {
         }
         else {
             question[rear]= qs;
-            System.out.print(qs.question);
             rear++;
         }
     }
     
     public QuestionSet deQueue(){
-        if(rear==0){
+        if(rear<0){
             System.out.println("Queue is empty");
             return null;
         }
@@ -44,5 +43,7 @@ public class Queue {
         }
     }
     
-    
+    public int count(){
+        return rear+1;
+    }
 }

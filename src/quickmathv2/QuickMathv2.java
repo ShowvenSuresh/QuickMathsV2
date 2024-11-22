@@ -4,6 +4,9 @@
  */
 package quickmathv2;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 /**
  *
@@ -16,6 +19,8 @@ public class QuickMathv2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+       
     }
+    
       
 }

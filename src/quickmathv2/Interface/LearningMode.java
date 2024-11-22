@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import quickmathv2.QuetionManager;
 /**
  *
  * @author Lenovo
@@ -430,6 +431,12 @@ private Clip clip;
             else {
                     jLabel7.setIcon(stopIcon);  // 切换到停止图标
                     
+                    //--> Added
+                    QuetionManager.level = 1;
+                    jLabel8.setIcon(playIcon);
+                    jLabel9.setIcon(playIcon);
+                    
+                    
                     isPlaying = true;
                     
                    }
@@ -451,6 +458,11 @@ private Clip clip;
             else {
                     jLabel8.setIcon(stopIcon);  // 切换到停止图标
                     
+                                        //--> Added
+                    QuetionManager.level = 2;
+                    jLabel7.setIcon(playIcon);
+                    jLabel9.setIcon(playIcon);
+                    
                     isPlaying = true;
                     
                    }
@@ -471,6 +483,11 @@ private Clip clip;
                     } 
             else {
                     jLabel9.setIcon(stopIcon);  // 切换到停止图标
+                    
+                                        //--> Added
+                    QuetionManager.level = 3;
+                    jLabel7.setIcon(playIcon);
+                    jLabel8.setIcon(playIcon);
                     
                     isPlaying = true;
                     

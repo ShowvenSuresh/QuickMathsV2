@@ -40,8 +40,8 @@ public class RankTable extends DataBaseManager{
         
         //sort the list
         Sorting sort =new Sorting();
-        sort.nameSort(rank);
-        //sort.sort(rank);
+        //sort.nameSort(rank);
+        sort.sort(rank);
         
         return rank;
     }

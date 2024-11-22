@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import quickmathv2.QuetionManager;
 /**
  *
  * @author Lenovo
@@ -53,7 +54,7 @@ private Clip clip;
         jPanel10 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        lblNext = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -242,18 +243,18 @@ private Clip clip;
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("NEXT >");
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblNext.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+        lblNext.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNext.setText("NEXT >");
+        lblNext.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
+                lblNextMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel10MouseEntered(evt);
+                lblNextMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel10MouseExited(evt);
+                lblNextMouseExited(evt);
             }
         });
 
@@ -263,12 +264,12 @@ private Clip clip;
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel10)
+                .addComponent(lblNext)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblNext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quickmathv2/MusicAndIcon/lovepik-cartoon-grass-png-image_401488857_wh1200-removebg-preview.png"))); // NOI18N
@@ -459,13 +460,18 @@ private Clip clip;
         if (isPlaying) {
                     jLabel7.setIcon(playIcon);  // 切换到播放图标
                     
+                    //--> Added
+                    QuetionManager.additionTerms = false;
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel7.setIcon(stopIcon);  // 切换到停止图标
                     
-                    isPlaying = true;
+                    //--> Added
+                    QuetionManager.additionTerms = true;
                     
+                    isPlaying = true;
                    }
         
         MusicPlayer player = MusicPlayer.getInstance();
@@ -480,10 +486,16 @@ private Clip clip;
         if (isPlaying) {
                     jLabel8.setIcon(playIcon);  // 切换到播放图标
                     
+                    //--> Added
+                    QuetionManager.substractionTerms = false;
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel8.setIcon(stopIcon);  // 切换到停止图标
+                    
+                    //--> Added
+                    QuetionManager.substractionTerms = true;
                     
                     isPlaying = true;
                     
@@ -501,10 +513,16 @@ private Clip clip;
         if (isPlaying) {
                     jLabel9.setIcon(playIcon);  // 切换到播放图标
                     
+                    //--> Added
+                    QuetionManager.multiplicationTerms = false;
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel9.setIcon(stopIcon);  // 切换到停止图标
+                    
+                    //--> Added
+                    QuetionManager.multiplicationTerms = true;
                     
                     isPlaying = true;
                     
@@ -537,10 +555,16 @@ private Clip clip;
         if (isPlaying) {
                     jLabel14.setIcon(playIcon);  // 切换到播放图标
                     
+                    //--> Added
+                    QuetionManager.divitionTerms = false;
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel14.setIcon(stopIcon);  // 切换到停止图标
+                    
+                    //--> Added
+                    QuetionManager.divitionTerms = true;
                     
                     isPlaying = true;
                     
@@ -561,27 +585,30 @@ private Clip clip;
         player.playbuttonMusic();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+    private void lblNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNextMouseClicked
         // TODO add your handling code here:
         QuestionDisplay jf1 = new QuestionDisplay();
+        
+        //--> Added
+        jf1.displayTime();
         jf1.show();
         dispose(); 
         
         MusicPlayer player = MusicPlayer.getInstance();
          
         player.playbuttonMusic();
-    }//GEN-LAST:event_jLabel10MouseClicked
+    }//GEN-LAST:event_lblNextMouseClicked
 
-    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+    private void lblNextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNextMouseEntered
         // TODO add your handling code here:
                 // TODO add your handling code here:
         jPanel11.setBackground(Color.decode("#EEE8AA"));
-    }//GEN-LAST:event_jLabel10MouseEntered
+    }//GEN-LAST:event_lblNextMouseEntered
 
-    private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
+    private void lblNextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNextMouseExited
         // TODO add your handling code here:
         jPanel11.setBackground(Color.decode("#FFFFCC"));
-    }//GEN-LAST:event_jLabel10MouseExited
+    }//GEN-LAST:event_lblNextMouseExited
 
     private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
         // TODO add your handling code here:
@@ -634,7 +661,6 @@ private Clip clip;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -659,6 +685,7 @@ private Clip clip;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lblNext;
     private javax.swing.JPanel musicpanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,8 +9,8 @@ public class Searching {
           while (low<=high)
         {
             int mid = (low+high)/2;
-            
-           int cmp= rank.get(mid).getName().compareTo(target);
+       
+           int cmp= target.trim().compareTo(rank.get(mid).getName().trim());
            System.out.println(mid+" "+low+" "+high+" "+cmp);
            
            if (cmp==0){
