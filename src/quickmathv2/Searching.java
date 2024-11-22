@@ -1,27 +1,27 @@
 
 package quickmathv2;
+import java.util.List;
 
 public class Searching {
-    public int name(String name[], String target){
-        int low=0, high=name.length;
+    public int searchName(List<Rankings> rank, String target){
+        int low=0, high=rank.size();
         
-          while (high -low>=0)
+          while (low<=high)
         {
-           int mid = (low+high)/2;
-           int cmp= target.compareTo(name[mid]);
+            int mid = (low+high)/2;
+            
+           int cmp= rank.get(mid).getName().compareTo(target);
+           System.out.println(mid+" "+low+" "+high+" "+cmp);
            
-           if (cmp==0)
-           {
+           if (cmp==0){
                return mid;
            }
            
-           else if (cmp>0)
-           {
+           else if (cmp>0){
                low = mid +1;
            }
            
-           else if (cmp<0)
-           {
+           else if (cmp<0){
                high = mid-1;
            }
             

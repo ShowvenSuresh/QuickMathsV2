@@ -13,7 +13,7 @@ public class RankTable extends DataBaseManager{
         try{
             Statement s= connectDB.createStatement();
             int add = s.executeUpdate(sql);
-            JOptionPane.showMessageDialog(null,"System Updated","Done",JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("System Updated");
         }catch(SQLException e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,"An Error has Occured ","Error",JOptionPane.WARNING_MESSAGE);
@@ -22,7 +22,26 @@ public class RankTable extends DataBaseManager{
     
     public ArrayList<Rankings> readRankings (String sql){
         ArrayList<Rankings> rank = new ArrayList<>();
+        try{
+            Statement s = connectDB.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+            
+            while (rs.next()){
+                //iterate through the result set and add it to  the array list
+                Rankings r = new Rankings(rs.getString("u_name"),rs.getString("lvl"),rs.getInt("score"),rs.getString("timetaken"));
+                rank.add(r);
+            }
+            
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            
+        }
         
+        //sort the list
+        Sorting sort =new Sorting();
+        sort.nameSort(rank);
+        //sort.sort(rank);
         
         return rank;
     }

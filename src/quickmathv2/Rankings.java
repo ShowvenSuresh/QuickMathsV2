@@ -5,14 +5,15 @@ public class Rankings {
     private String name;
     private String level;
     private String timeTaken;
-    private String score;
+    private int score;
     
-    public Rankings (String name,String level,String timeTaken,String score){
+    public Rankings (String name,String level,int score, String timeTaken){
         setName(name);
         setLevel(level);
         setTimeTaken(timeTaken);
         setScore(score);
     }
+    
     
     public void setName(String name){
         this.name=name;
@@ -38,11 +39,15 @@ public class Rankings {
         return timeTaken;
     }
     
-    public void setScore(String score){
+    public void setScore(int score){
         this.score=score;
     }
     
-    public String getScore(){
+    public int getScore(){
         return score;
+    }
+    
+    public String toString(){
+        return "name :"+getName()+" Level :"+getLevel()+" Score : "+getScore()+" TimeTaken:"+getTimeTaken();
     }
 }
