@@ -27,11 +27,14 @@ public class QuetionManager {
     static public boolean multiplicationTerms = false;
     static public boolean divitionTerms = false;
     
+    static public boolean learningMode = true;
+    
     static public int level = 1;
     static public int questionNum = 5;
     
     public int correct = 0;
     public int notCorrect = 0;
+    
     
     public QuetionManager(JLabel lblQuestion, JLabel lblSelection1, JLabel lblSelection2, JLabel lblSelection3, JLabel lblSelection4){
         QuetionManager.lblQuestion = lblQuestion;
@@ -65,6 +68,7 @@ public class QuetionManager {
             
         }
     }
+    
     private boolean ansCorrectFirstTime = true;
     public void CheckAns(int selectBox){
         boolean correct = false;
@@ -86,32 +90,56 @@ public class QuetionManager {
                 lblSelection4.setForeground(Color.red);
                 break;
         }
-        if(correct){
-            if(ansCorrectFirstTime)
-                this.correct++;
-            else
-                notCorrect++;
-            SetNextQuestion();
+        
+        if(learningMode){
+            if(correct){
+                if(ansCorrectFirstTime)
+                    this.correct++;
+                else
+                    notCorrect++;
+                SetNextQuestion();
+            }else{
+                ansCorrectFirstTime = false;
+                if(currentQuestion.anser == currentQuestion.selection1){
+                   lblSelection1.setForeground(Color.green);
+                }
+                if(currentQuestion.anser == currentQuestion.selection2){
+                   lblSelection2.setForeground(Color.green);
+                }
+                if(currentQuestion.anser == currentQuestion.selection3){
+                   lblSelection3.setForeground(Color.green);
+                }
+                if(currentQuestion.anser == currentQuestion.selection4){
+                   lblSelection4.setForeground(Color.green);
+                }
+            }
         }else{
-            ansCorrectFirstTime = false;
-            if(currentQuestion.anser == currentQuestion.selection1){
-               lblSelection1.setForeground(Color.green);
-            }
-            if(currentQuestion.anser == currentQuestion.selection2){
-               lblSelection2.setForeground(Color.green);
-            }
-            if(currentQuestion.anser == currentQuestion.selection3){
-               lblSelection3.setForeground(Color.green);
-            }
-            if(currentQuestion.anser == currentQuestion.selection4){
-               lblSelection4.setForeground(Color.green);
+            if(correct){
+                this.correct++;
+                SetNextQuestion();
+            }else{
+                this.notCorrect++;
+                SetNextQuestion();
             }
         }
+        
     }
     
     public Queue questionQueue = new Queue();
     private void generateQuestion(){
-
+        int maxNum = 10;
+        switch (level){
+            case 1:
+                maxNum = 10;
+                break;
+            case 2:
+                maxNum = 20;
+                break;
+            case 3:
+                maxNum = 30;
+                break;
+        }
+        
         QuestionGenerator generator = new QuestionGenerator();
         for(int i = 0; i<questionNum; i++){
             System.out.println(i+" "+questionQueue.count());
@@ -119,25 +147,25 @@ public class QuetionManager {
             switch (random.nextInt(4)){
                 case 0:
                     if(additionTerms)
-                        questionQueue.enQueue(generator.generateAdditionQuestion(10));
+                        questionQueue.enQueue(generator.generateAdditionQuestion(maxNum));
                     else
                         i--;
                     break;
                 case 1:
                     if(substractionTerms)
-                        questionQueue.enQueue(generator.generateSubstractionQuestion(10));
+                        questionQueue.enQueue(generator.generateSubstractionQuestion(maxNum));
                     else
                         i--;
                     break;
                 case 2:
                     if(multiplicationTerms)
-                        questionQueue.enQueue(generator.generateMultiplicationQuestion(10));
+                        questionQueue.enQueue(generator.generateMultiplicationQuestion(maxNum));
                     else
                         i--;
                     break;
                 case 3:
                     if(divitionTerms)
-                        questionQueue.enQueue(generator.generateDivisionQuestion(100));
+                        questionQueue.enQueue(generator.generateDivisionQuestion(maxNum * maxNum));
                     else
                         i--;
                     break;

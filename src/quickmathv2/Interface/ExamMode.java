@@ -26,6 +26,9 @@ private Clip clip;
      */
     public ExamMode() {
         initComponents();
+        //---> Added
+        QuetionManager.learningMode = false;
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.

@@ -24,6 +24,7 @@ private Clip clip;
      */
     public RankMode() {
         initComponents();
+        QuetionManager.learningMode = false;
     }
 
     /**
@@ -412,7 +413,7 @@ private Clip clip;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
         ImageIcon playIcon = new ImageIcon(getClass().getResource("/quickmathv2/MusicAndIcon/blank.png"));

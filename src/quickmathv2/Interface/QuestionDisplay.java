@@ -609,13 +609,14 @@ public class QuestionDisplay extends javax.swing.JFrame {
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         // TODO add your handling code here:
         MusicPlayer player = MusicPlayer.getInstance();
-        //--> Added
+        //--> Added //---> modify
                     System.out.println(qm.questionQueue.count());
 
         if(qm.questionQueue.count() > 0)
             qm.CheckAns(0);
         else{
-            CheckOut checkOut = new CheckOut(qm.correct,qm.notCorrect);
+            String time = timer.getTime();
+            CheckOutRank checkOut = new CheckOutRank(qm.correct,qm.notCorrect, time);
             checkOut.show();
             dispose();
         }
@@ -632,7 +633,8 @@ public class QuestionDisplay extends javax.swing.JFrame {
         if(qm.questionQueue.count() > 0)
             qm.CheckAns(1);
         else{
-            CheckOut checkOut = new CheckOut(qm.correct,qm.notCorrect);
+            String time = timer.getTime();
+            CheckOutRank checkOut = new CheckOutRank(qm.correct,qm.notCorrect, time);
             checkOut.show();
             dispose();
         }
@@ -647,7 +649,8 @@ public class QuestionDisplay extends javax.swing.JFrame {
         if(qm.questionQueue.count() > 0)
             qm.CheckAns(2);
         else{
-            CheckOut checkOut = new CheckOut(qm.correct,qm.notCorrect);
+            String time = timer.getTime();
+            CheckOutRank checkOut = new CheckOutRank(qm.correct,qm.notCorrect, time);
             checkOut.show();
             dispose();
         }
@@ -662,7 +665,8 @@ public class QuestionDisplay extends javax.swing.JFrame {
         if(qm.questionQueue.count() > 0)
             qm.CheckAns(3);
         else{
-            CheckOut checkOut = new CheckOut(qm.correct,qm.notCorrect);
+            String time = timer.getTime();
+            CheckOutRank checkOut = new CheckOutRank(qm.correct,qm.notCorrect, time);
             checkOut.show();
             dispose();
         }

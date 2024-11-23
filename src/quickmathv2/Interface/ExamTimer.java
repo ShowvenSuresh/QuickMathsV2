@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import quickmathv2.QuetionManager;
 
 /**
  *
@@ -322,7 +323,7 @@ private boolean isPlaying = false;
                         .addComponent(jLabel7)
                         .addGap(195, 195, 195)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(816, Short.MAX_VALUE)
@@ -389,13 +390,14 @@ private boolean isPlaying = false;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -428,6 +430,9 @@ private boolean isPlaying = false;
         // TODO add your handling code here:
         QuestionDisplay jf1 = new QuestionDisplay();
         jf1.show();
+        if(timerNeed)
+            jf1.displayTime();
+        
         dispose();
         
         MusicPlayer player = MusicPlayer.getInstance();
@@ -447,7 +452,7 @@ private boolean isPlaying = false;
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        ExamTheme jf1 = new ExamTheme();
+        QuestionDisplay jf1 = new QuestionDisplay();
         jf1.show();
         dispose();
         
@@ -467,6 +472,11 @@ private boolean isPlaying = false;
                     } 
             else {
                     jLabel8.setIcon(stopIcon);  // 切换到停止图标
+                    
+                    //--> Added
+                    QuetionManager.questionNum = 20;
+                    jLabel9.setIcon(playIcon);
+                    jLabel11.setIcon(playIcon);
                     
                     isPlaying = true;
                     
@@ -488,6 +498,10 @@ private boolean isPlaying = false;
                     } 
             else {
                     jLabel9.setIcon(stopIcon);  // 切换到停止图标
+                    //--> Added
+                    QuetionManager.questionNum = 30;
+                    jLabel8.setIcon(playIcon);
+                    jLabel11.setIcon(playIcon);
                     
                     isPlaying = true;
                     
@@ -510,6 +524,11 @@ private boolean isPlaying = false;
             else {
                     jLabel11.setIcon(stopIcon);  // 切换到停止图标
                     
+                    //--> Added
+                    QuetionManager.questionNum = 50;
+                    jLabel8.setIcon(playIcon);
+                    jLabel9.setIcon(playIcon);
+                    
                     isPlaying = true;
                     
                    }
@@ -519,6 +538,10 @@ private boolean isPlaying = false;
         player.playbuttonMusic();
     }//GEN-LAST:event_jLabel11MouseClicked
 
+    
+    //--> Added
+    private boolean timerNeed = false;
+    
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
         ImageIcon playIcon = new ImageIcon(getClass().getResource("/quickmathv2/MusicAndIcon/blank.png"));
@@ -526,10 +549,18 @@ private boolean isPlaying = false;
         if (isPlaying) {
                     jLabel12.setIcon(playIcon);  // 切换到播放图标
                     
+                    //-->Added
+                    timerNeed = false;
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel12.setIcon(stopIcon);  // 切换到停止图标
+                    
+                    //-->Added
+                    timerNeed = true;
+                    jLabel13.setIcon(playIcon);
+
                     
                     isPlaying = true;
                     
@@ -547,10 +578,18 @@ private boolean isPlaying = false;
         if (isPlaying) {
                     jLabel13.setIcon(playIcon);  // 切换到播放图标
                     
+                    //-->Added
+                    timerNeed = false;
+                    
                     isPlaying = false;
                     } 
             else {
                     jLabel13.setIcon(stopIcon);  // 切换到停止图标
+                    
+                    //-->Added
+                    timerNeed = true;
+                    jLabel12.setIcon(playIcon);
+                    
                     
                     isPlaying = true;
                     

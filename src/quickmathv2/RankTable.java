@@ -46,5 +46,22 @@ public class RankTable extends DataBaseManager{
         return rank;
     }
     
+    public int checkName(String sql){
+        
+        try{
+            Statement s =connectDB.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+            if (rs.next()){
+                String name = rs.getString("u_name");
+                return -1;
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return 1;
+    }
+    
     
 }
