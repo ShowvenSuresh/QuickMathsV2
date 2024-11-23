@@ -12,6 +12,7 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import quickmathv2.QuetionManager;
+import quickmathv2.RankTable;
 
 /**
  *
@@ -233,21 +234,33 @@ public class Name extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanel12.setBackground(Color.decode("#FFFFCC"));
     }//GEN-LAST:event_jLabel11MouseExited
-
+    static public String uName1= null;
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
-        QuetionManager.additionTerms = true;
-        QuetionManager.substractionTerms = true;
-        QuetionManager.multiplicationTerms = true;
-        QuetionManager.divitionTerms = true;
-        QuetionManager.questionNum=20;
-        QuestionDisplay jf1 = new QuestionDisplay();
-        jf1.show();
-        dispose();
-        
         MusicPlayer player = MusicPlayer.getInstance();
-         
         player.playbuttonMusic();
+        String name= jTextField1.getText();
+        RankTable rt = new RankTable();
+        String sql= "select u_name from ranking where u_name = '"+name+"'";
+        int i= rt.checkName(sql);
+        
+        if (i==1){
+            uName1=name;
+            QuetionManager.additionTerms = true;
+            QuetionManager.substractionTerms = true;
+            QuetionManager.multiplicationTerms = true;
+            QuetionManager.divitionTerms = true;
+            QuetionManager.questionNum=20;
+            QuestionDisplay jf1 = new QuestionDisplay();
+            jf1.displayTime();
+            jf1.show();
+            dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Name already exists ", "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked

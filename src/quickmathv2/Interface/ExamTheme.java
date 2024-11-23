@@ -596,7 +596,8 @@ private Clip clip;
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
-        QuestionDisplay jf1 = new QuestionDisplay();
+        //--> ADDED AND DELETE
+        ExamTimer jf1 = new ExamTimer();
         jf1.show();
         dispose();
         

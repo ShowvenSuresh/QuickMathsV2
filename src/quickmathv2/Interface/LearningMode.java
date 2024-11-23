@@ -24,7 +24,8 @@ private Clip clip;
      */
     public LearningMode() {
         initComponents();
-        
+        //---> Added
+        QuetionManager.learningMode = true;
     }
 
     /**
