@@ -39,9 +39,18 @@ public class RankTable extends DataBaseManager{
         }
         
         //sort the list
+        
         Sorting sort =new Sorting();
         //sort.nameSort(rank);
+        double startTime = System.nanoTime();
+        System.out.println("START TIME :"+startTime);
+        
         sort.sort(rank);
+        
+        double endTime = System.nanoTime();
+        System.out.println("END TIME :"+endTime); 
+        double tD = endTime -startTime;
+        System.out.println("DURATION :"+tD);
         
         return rank;
     }

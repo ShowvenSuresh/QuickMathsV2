@@ -6,6 +6,7 @@ package quickmathv2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import quickmathv2.Interface.MainPage;
 
 
 /**
@@ -19,7 +20,8 @@ public class QuickMathv2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-       
+       MainPage mp = new MainPage();
+       mp.show();
     }
     
       

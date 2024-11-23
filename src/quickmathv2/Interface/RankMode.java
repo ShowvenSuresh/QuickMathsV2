@@ -475,7 +475,7 @@ private Clip clip;
                     } 
             else {
                     jLabel9.setIcon(stopIcon);  // 切换到停止图标
-                    QuetionManager.level = 2;
+                    QuetionManager.level = 3;
                     jLabel7.setIcon(playIcon);
                     jLabel8.setIcon(playIcon);
                     isPlaying = true;

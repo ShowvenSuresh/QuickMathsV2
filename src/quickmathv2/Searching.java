@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Searching {
     public int searchName(List<Rankings> rank, String target){
-        int low=0, high=rank.size();
+        int low=0, high=rank.size()-1;
         
           while (low<=high)
         {

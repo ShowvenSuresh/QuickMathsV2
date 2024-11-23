@@ -203,11 +203,9 @@ private Clip clip;
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 620, 10));
 
-        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("SimSun-ExtB", 3, 48)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("SEARCH :");
-        jLabel8.setOpaque(true);
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 210, 50));
 
         jLabel9.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
@@ -546,7 +544,15 @@ private Clip clip;
         try{
             Searching bs = new Searching();
             
+            
+            double startTime = System.nanoTime();//test time taken 
+            System.out.println("BINARY START TIME :"+startTime);
              j= bs.searchName(rank, s);
+            double endTime = System.nanoTime();
+            System.out.println("BINARY END TIME :"+endTime); 
+            double tD = endTime -startTime;
+            System.out.println("BINARY DURATION :"+tD);
+             
             if(j<0){
                 System.out.println("dun hava");
             }
